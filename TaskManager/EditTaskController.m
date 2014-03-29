@@ -10,6 +10,10 @@
 #import "Task.h"
 
 @interface EditTaskController () <UITextFieldDelegate, UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *markButton;
+@property (weak, nonatomic) IBOutlet UITextView *taskDescTextView;
+@property (weak, nonatomic) IBOutlet UITextField *taskNameTextField;
+@property (weak, nonatomic) IBOutlet UISlider *taskCompletionSlider;
 @end
 
 @implementation EditTaskController
@@ -18,20 +22,29 @@
 {
     [super viewWillAppear:animated];
     
-    //заполняем данными из Task
-    //у кнопок есть свойство selected, оно тут  пригодится
+    [_markButton setSelected:[_task marked]];
+    [_taskNameTextField setText:[_task title]];
+    [_taskNameTextField becomeFirstResponder];
+    [_taskDescTextView setText:[_task desc]];
+    [_taskCompletionSlider setValue:[_task complete] animated:NO];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
-    //сохраняем изменение Task
 }
 
 - (IBAction)markPressed:(UIButton*)sender
 {
     sender.selected = !sender.selected;
+    [_task setMarked:sender.selected];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [_task setTitle:[textField text]];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [_task setDesc:[textView text]];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -50,6 +63,10 @@
     }
     
     return YES;
+}
+
+- (IBAction)changeCompletion:(id)sender {
+    [_task setComplete:(int)_taskCompletionSlider.value];
 }
 
 @end
