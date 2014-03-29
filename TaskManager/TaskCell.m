@@ -12,12 +12,24 @@
 @interface TaskCell()
 @end
 
-@implementation TaskCell
+@implementation TaskCell {
+    __weak IBOutlet UILabel *taskTitle;
+    __weak IBOutlet UIImageView *markImage;
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        [markImage setHidden:YES];
+    }
+    return self;
+}
 
 - (void)setTask:(Task *)task
 {
     _task = task;
-    //обновляем данные в ячейке
+    [markImage setHidden:![_task marked]];
+    [taskTitle setText:[_task title]];
 }
 
 @end
