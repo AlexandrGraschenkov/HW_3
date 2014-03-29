@@ -26,7 +26,7 @@
     [_taskNameTextField setText:[_task title]];
     [_taskNameTextField becomeFirstResponder];
     [_taskDescTextView setText:[_task desc]];
-    [_taskCompletionSlider setValue:[_task complete]/100.0 animated:NO];
+    [_taskCompletionSlider setValue:[_task complete] animated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -66,7 +66,7 @@
 }
 
 - (IBAction)changeCompletion:(id)sender {
-    [_task setComplete:(int)_taskCompletionSlider.value*100];
+    [_task setComplete:(int)_taskCompletionSlider.value];
 }
 
 @end
