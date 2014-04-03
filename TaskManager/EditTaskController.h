@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Task.h"
 
-@class Task;
 @interface EditTaskController : UIViewController
+
 @property (nonatomic, strong) Task* task;
+
 @end

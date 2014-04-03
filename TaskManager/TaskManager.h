@@ -14,5 +14,6 @@
 - (void)addTask:(Task*)task;
 - (void)deleteTask:(Task*)task;
 - (void)taskChanged:(Task*)task;
+- (Task *)getTaskAtIndex:(int)index;
 @property (nonatomic, strong, readonly) NSArray* tasks;
 @end

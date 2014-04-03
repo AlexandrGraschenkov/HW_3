@@ -57,6 +57,11 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (Task *)getTaskAtIndex:(int)index
+{
+    return _tasks[index];
+}
+
 #pragma mark - Operations
 - (void)addTask:(Task *)task
 {

@@ -7,9 +7,15 @@
 //
 
 #import "EditTaskController.h"
-#import "Task.h"
+#import "TaskManager.h"
 
 @interface EditTaskController () <UITextFieldDelegate, UITextViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *descView;
+@property (weak, nonatomic) IBOutlet UISlider *completeSlider;
+@property (weak, nonatomic) IBOutlet UIButton *markButton;
+
 @end
 
 @implementation EditTaskController
@@ -17,16 +23,22 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    //заполняем данными из Task
-    //у кнопок есть свойство selected, оно тут  пригодится
+    _titleLabel.text = _task.title;
+    _descView.text = _task.desc;
+    _completeSlider.value = _task.complete;
+    _markButton.selected = _task.marked;
+    [_titleLabel setDelegate:self];
+    [_descView setDelegate:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    _task.title = _titleLabel.text;
+    _task.desc = _descView.text;
+    _task.complete = _completeSlider.value;
+    _task.marked = _markButton.selected;
+    [[TaskManager sharedInstance] taskChanged:_task];
     [super viewWillDisappear:animated];
-    
-    //сохраняем изменение Task
 }
 
 - (IBAction)markPressed:(UIButton*)sender
@@ -34,16 +46,14 @@
     sender.selected = !sender.selected;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    //выходим из режима редактирования
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
     [textField resignFirstResponder];
     return YES;
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    //выходим из режима редактирования
     if([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
         return NO;
