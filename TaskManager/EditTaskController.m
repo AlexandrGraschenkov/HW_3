@@ -40,11 +40,6 @@
 - (IBAction)markPressed:(UIButton*)sender
 {
     sender.selected = !sender.selected;
-    if(isCompleted){
-        isCompleted.titleLabel.text=@"Well done!";
-    }else{
-        isCompleted.titleLabel.text=@"Done?";
-    }
     _task.marked=sender.selected;
 }
 
