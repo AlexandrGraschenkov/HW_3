@@ -68,6 +68,7 @@
         cell=[[TaskCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.task=taskManager.tasks[indexPath.row];
+    [cell setTask:taskManager.tasks[indexPath.row]];
     return cell;
 }
 
