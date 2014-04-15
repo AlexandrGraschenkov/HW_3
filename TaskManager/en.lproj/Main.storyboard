@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5tb-cn-XxG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5tb-cn-XxG">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Tasks Table Controller - Tasks-->
@@ -12,11 +12,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskCell" id="BGV-7E-CQU" customClass="TaskCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BGV-7E-CQU" id="Wf8-Gc-bnX">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="zS9-nr-awH">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="59"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3eo-Wp-Ww5">
+                                                    <rect key="frame" x="15" y="0.0" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CQS-G0-unS">
+                                                    <rect key="frame" x="15" y="29" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="uoE-aa-lFw">
+                                                    <rect key="frame" x="246" y="15" width="33" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellView" destination="zS9-nr-awH" id="a3k-ot-i5O"/>
+                                    <outlet property="desc" destination="CQS-G0-unS" id="jU9-Mi-xB1"/>
+                                    <outlet property="mark" destination="uoE-aa-lFw" id="y9S-Uj-PeC"/>
+                                    <outlet property="title" destination="3eo-Wp-Ww5" id="3PM-tZ-ScZ"/>
+                                    <segue destination="xR6-ta-074" kind="push" identifier="editTask" id="d5D-kl-uyR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ust-wE-qLc" id="cBu-rE-EWP"/>
+                            <outlet property="delegate" destination="ust-wE-qLc" id="Hmp-bW-2XH"/>
+                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Tasks" id="g6j-yK-U3f">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aOu-f5-RUM">
                             <connections>
-                                <segue destination="xR6-ta-074" kind="push" identifier="addTask" id="Jaw-W3-Lbc"/>
+                                <segue destination="xR6-ta-074" kind="push" id="uuR-Xg-E3F"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -67,7 +114,7 @@
                                     <color key="titleColor" red="0.43004840353260865" green="0.37862347642364091" blue="0.17929556780381142" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="markPressed:" destination="xR6-ta-074" eventType="touchUpInside" id="Lzw-Ph-GAX"/>
+                                    <action selector="markPressed:" destination="xR6-ta-074" eventType="touchUpInside" id="sZK-2O-lG6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,8 +123,11 @@
                     <navigationItem key="navigationItem" title="Edit task" id="A6d-to-lQN"/>
                     <connections>
                         <outlet property="completeSlider" destination="FY9-qr-ASS" id="ho7-pj-2zt"/>
+                        <outlet property="desc" destination="ESF-sN-tiU" id="eZh-WQ-ccl"/>
                         <outlet property="descTextView" destination="ESF-sN-tiU" id="P4g-jI-Ow1"/>
                         <outlet property="markedButton" destination="e8p-GK-dVd" id="CVB-D0-quh"/>
+                        <outlet property="perc" destination="FY9-qr-ASS" id="2h3-aD-7Ic"/>
+                        <outlet property="title" destination="0Yq-4j-d5S" id="wLv-pu-NXJ"/>
                         <outlet property="titleTextField" destination="0Yq-4j-d5S" id="cMq-Dl-fFh"/>
                     </connections>
                 </viewController>
@@ -109,4 +159,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="d5D-kl-uyR"/>
+    </inferredMetricsTieBreakers>
 </document>

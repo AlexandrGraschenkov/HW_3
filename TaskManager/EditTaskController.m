@@ -8,8 +8,12 @@
 
 #import "EditTaskController.h"
 #import "Task.h"
+#import "TaskManager.h"
 
 @interface EditTaskController () <UITextFieldDelegate, UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *desc;
+@property (weak, nonatomic) IBOutlet UISlider *complete;
 @end
 
 @implementation EditTaskController
@@ -18,7 +22,13 @@
 {
     [super viewWillAppear:animated];
     
-    //заполняем данными из Task
+
+    _titleLabel.text = _task.title;
+    _desc.text = _task.desc;
+    _complete.value = _task.complete;
+    [_titleLabel setDelegate:self];
+    [_desc setDelegate:self];
+    
     //у кнопок есть свойство selected, оно тут  пригодится
 }
 
@@ -26,6 +36,10 @@
 {
     [super viewWillDisappear:animated];
     
+    _task.title = _titleLabel.text;
+    _task.desc = _desc.text;
+    _task.complete = _complete;
+    [[TaskManager sharedInstance]taskChanged:_task];
     //сохраняем изменение Task
 }
 
