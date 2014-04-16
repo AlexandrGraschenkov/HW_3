@@ -23,20 +23,19 @@
     _task = task;
     //обновляем данные в ячейке
     CGRect frame = CGRectMake(0, 0, self.frame.size.width * (((float)_task.complete) / 100), _cellView.frame.size.height);
- 	
-        [_cellView setFrame:frame];
-
+    UIView *completeView = [[UIView alloc]initWithFrame:frame];
+    completeView.backgroundColor = [UIColor blueColor];
+    completeView.opaque = NO;
+    [_cellView addSubview: completeView];
        if (_task.marked)
         
             {
+                _mark.image = [UIImage imageNamed:@"star.png"];
             
-                    _mark.image = [UIImage imageNamed:@"star.png"];
-            
-               }
- 	
+            }
        _title.text = _task.title;
- 		
        _desc.text = _task.desc;
+
 }
 
 @end

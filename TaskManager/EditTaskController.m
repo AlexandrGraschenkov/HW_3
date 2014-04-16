@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *desc;
 @property (weak, nonatomic) IBOutlet UISlider *complete;
+@property (weak, nonatomic) IBOutlet UIButton *markedButton;
 @end
 
 @implementation EditTaskController
@@ -26,6 +27,7 @@
     _titleLabel.text = _task.title;
     _desc.text = _task.desc;
     _complete.value = _task.complete;
+    _markedButton.selected = _task.marked;
     [_titleLabel setDelegate:self];
     [_desc setDelegate:self];
     
@@ -34,12 +36,18 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+    if(!_task) {
+        _task = [Task new];
+    }
     
     _task.title = _titleLabel.text;
     _task.desc = _desc.text;
-    _task.complete = _complete;
+    _task.complete = _complete.value;
+    _task.marked = _markedButton.selected;
+    NSLog(@"title: %@",_titleLabel.text);
+    NSLog(@"title: %@",_task.title);
     [[TaskManager sharedInstance]taskChanged:_task];
+    [super viewWillDisappear:animated];
     //сохраняем изменение Task
 }
 
@@ -66,4 +74,6 @@
     return YES;
 }
 
+- (IBAction)markedButton:(id)sender {
+}
 @end

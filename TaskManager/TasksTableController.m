@@ -64,6 +64,8 @@
     //в визуальном представлении надо незабыть задать индетификатор для ячейки
     static NSString *CellIdentifier = @"TaskCell";
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    [cell setTask:taskManager.tasks[indexPath.row]];
+   // NSLog(@"cell %@", taskManager.tasks[indexPath.row]);
     
     return cell;
 }
@@ -85,7 +87,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        [taskManager deleteTask:taskManager.tasks[indexPath.row]];
+        TaskCell *cell = (TaskCell *) [tableView cellForRowAtIndexPath:indexPath];
+        
+        [taskManager deleteTask:cell.task];
         [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [tableView endUpdates];

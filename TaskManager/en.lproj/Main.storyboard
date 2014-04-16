@@ -20,37 +20,35 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" id="zS9-nr-awH">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="59"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3eo-Wp-Ww5">
-                                                    <rect key="frame" x="15" y="0.0" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CQS-G0-unS">
-                                                    <rect key="frame" x="15" y="29" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="uoE-aa-lFw">
-                                                    <rect key="frame" x="246" y="15" width="33" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bU3-l5-HBH">
+                                            <rect key="frame" x="11" y="0.0" width="158" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BMh-aD-TqP">
+                                            <rect key="frame" x="11" y="29" width="158" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <view alpha="0.20000000000000001" contentMode="scaleToFill" id="wYs-fT-DbN">
+                                            <rect key="frame" x="11" y="0.0" width="234" height="59"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ly5-fZ-hbF">
+                                            <rect key="frame" x="245" y="15" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cellView" destination="zS9-nr-awH" id="a3k-ot-i5O"/>
-                                    <outlet property="desc" destination="CQS-G0-unS" id="jU9-Mi-xB1"/>
-                                    <outlet property="mark" destination="uoE-aa-lFw" id="y9S-Uj-PeC"/>
-                                    <outlet property="title" destination="3eo-Wp-Ww5" id="3PM-tZ-ScZ"/>
+                                    <outlet property="cellView" destination="wYs-fT-DbN" id="dbu-ul-VMF"/>
+                                    <outlet property="desc" destination="BMh-aD-TqP" id="6an-Nw-noB"/>
+                                    <outlet property="mark" destination="ly5-fZ-hbF" id="gmZ-CK-gES"/>
+                                    <outlet property="title" destination="bU3-l5-HBH" id="oMs-Zt-bFU"/>
                                     <segue destination="xR6-ta-074" kind="push" identifier="editTask" id="d5D-kl-uyR"/>
                                 </connections>
                             </tableViewCell>
@@ -63,7 +61,7 @@
                     <navigationItem key="navigationItem" title="Tasks" id="g6j-yK-U3f">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aOu-f5-RUM">
                             <connections>
-                                <segue destination="xR6-ta-074" kind="push" id="uuR-Xg-E3F"/>
+                                <segue destination="xR6-ta-074" kind="push" identifier="addTask" id="uuR-Xg-E3F"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -115,6 +113,7 @@
                                 </state>
                                 <connections>
                                     <action selector="markPressed:" destination="xR6-ta-074" eventType="touchUpInside" id="sZK-2O-lG6"/>
+                                    <action selector="markedButton:" destination="xR6-ta-074" eventType="touchUpInside" id="fLC-77-J4A"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -122,13 +121,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Edit task" id="A6d-to-lQN"/>
                     <connections>
-                        <outlet property="completeSlider" destination="FY9-qr-ASS" id="ho7-pj-2zt"/>
-                        <outlet property="desc" destination="ESF-sN-tiU" id="eZh-WQ-ccl"/>
-                        <outlet property="descTextView" destination="ESF-sN-tiU" id="P4g-jI-Ow1"/>
-                        <outlet property="markedButton" destination="e8p-GK-dVd" id="CVB-D0-quh"/>
-                        <outlet property="perc" destination="FY9-qr-ASS" id="2h3-aD-7Ic"/>
-                        <outlet property="title" destination="0Yq-4j-d5S" id="wLv-pu-NXJ"/>
-                        <outlet property="titleTextField" destination="0Yq-4j-d5S" id="cMq-Dl-fFh"/>
+                        <outlet property="complete" destination="FY9-qr-ASS" id="sxw-mw-xaB"/>
+                        <outlet property="desc" destination="ESF-sN-tiU" id="q5I-en-g3T"/>
+                        <outlet property="markedButton" destination="e8p-GK-dVd" id="hej-Eo-BCu"/>
+                        <outlet property="titleLabel" destination="0Yq-4j-d5S" id="2s7-cr-jil"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rp1-AM-QNr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,6 +156,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="d5D-kl-uyR"/>
+        <segue reference="uuR-Xg-E3F"/>
     </inferredMetricsTieBreakers>
 </document>
