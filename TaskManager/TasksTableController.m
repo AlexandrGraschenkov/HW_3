@@ -53,7 +53,6 @@
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return taskManager.tasks.count;
@@ -61,27 +60,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //в визуальном представлении надо незабыть задать индетификатор для ячейки
     static NSString *CellIdentifier = @"TaskCell";
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    cell.task = [taskManager.tasks objectAtIndex:indexPath.row];
     return cell;
 }
-
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //удаляем строчку Task из данных, обновляем таблицу
+        Task *task = [taskManager.tasks objectAtIndex:indexPath.row];
+        [taskManager deleteTask:task];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     }
 }
 
