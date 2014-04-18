@@ -5,34 +5,43 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3F5037C0-C55D-499C-A24B-DC50509E8E6D</string>
+	<string>FB4FFCC2-231B-468A-81F4-198E0E64CE4A</string>
 	<key>IDESourceControlProjectName</key>
 	<string>TaskManager</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>C11D48BF-F41B-4C82-9804-A72CDF6BFC05</key>
-		<string>https://github.com/Sk0rpion/HW_3.git</string>
+		<key>2E98DBEC-7EB1-4B44-B35E-E8DE79D837F8</key>
+		<string>https://github.com/akhakimzyanov/HW_3/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>TaskManager.xcodeproj/project.xcworkspace</string>
+	<string>trunk/TaskManager.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>C11D48BF-F41B-4C82-9804-A72CDF6BFC05</key>
-		<string>../..</string>
+		<key>2E98DBEC-7EB1-4B44-B35E-E8DE79D837F8</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>2E98DBEC-7EB1-4B44-B35E-E8DE79D837F8</key>
+		<string>https://github.com/akhakimzyanov/HW_3</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Sk0rpion/HW_3.git</string>
+	<string>https://github.com/akhakimzyanov/HW_3/trunk/trunk/TaskManager.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C11D48BF-F41B-4C82-9804-A72CDF6BFC05</string>
+	<string>2E98DBEC-7EB1-4B44-B35E-E8DE79D837F8</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>branches</string>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>trunk</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C11D48BF-F41B-4C82-9804-A72CDF6BFC05</string>
+			<string>2E98DBEC-7EB1-4B44-B35E-E8DE79D837F8</string>
 			<key>IDESourceControlWCCName</key>
 			<string>HW_3</string>
 		</dict>
