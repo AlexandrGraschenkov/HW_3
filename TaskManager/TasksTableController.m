@@ -65,7 +65,6 @@
     static NSString *CellIdentifier = @"TaskCell";
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     [cell setTask:taskManager.tasks[indexPath.row]];
-   // NSLog(@"cell %@", taskManager.tasks[indexPath.row]);
     
     return cell;
 }

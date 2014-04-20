@@ -44,8 +44,6 @@
     _task.desc = _desc.text;
     _task.complete = _complete.value;
     _task.marked = _markedButton.selected;
-    NSLog(@"title: %@",_titleLabel.text);
-    NSLog(@"title: %@",_task.title);
     [[TaskManager sharedInstance]taskChanged:_task];
     [super viewWillDisappear:animated];
     //сохраняем изменение Task

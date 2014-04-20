@@ -22,19 +22,25 @@
 {
     _task = task;
     //обновляем данные в ячейке
+    if ([[_cellView subviews] count] != 0)
+        [[[_cellView subviews] objectAtIndex:0]removeFromSuperview];
+    NSLog(@"%d",_task.complete);
     CGRect frame = CGRectMake(0, 0, self.frame.size.width * (((float)_task.complete) / 100), _cellView.frame.size.height);
     UIView *completeView = [[UIView alloc]initWithFrame:frame];
+    
+    
     completeView.backgroundColor = [UIColor blueColor];
     completeView.opaque = NO;
     [_cellView addSubview: completeView];
-       if (_task.marked)
+    
+    if (_task.marked)
         
-            {
-                _mark.image = [UIImage imageNamed:@"star.png"];
+        {
+            _mark.image = [UIImage imageNamed:@"star.png"];
             
-            }
-       _title.text = _task.title;
-       _desc.text = _task.desc;
+        }
+    _title.text = _task.title;
+    _desc.text = _task.desc;
 
 }
 
