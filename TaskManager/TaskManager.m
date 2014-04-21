@@ -60,8 +60,10 @@
 #pragma mark - Operations
 - (void)addTask:(Task *)task
 {
-    [_tasks addObject:task];
-    [self saveTasks];
+    if (task != nil) {
+        [_tasks addObject:task];
+        [self saveTasks];
+    }
 }
 
 - (void)deleteTask:(Task *)task

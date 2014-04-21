@@ -64,6 +64,7 @@
     //в визуальном представлении надо незабыть задать индетификатор для ячейки
     static NSString *CellIdentifier = @"TaskCell";
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    [cell setTask:taskManager.tasks[indexPath.row]];
     
     return cell;
 }
@@ -72,8 +73,11 @@
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    if (indexPath.section == 0) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 
@@ -81,7 +85,13 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //удаляем строчку Task из данных, обновляем таблицу
+        
+        TaskCell *cell = (TaskCell *) [tableView cellForRowAtIndexPath:indexPath];
+        
+        [taskManager deleteTask:cell.task];
+        [tableView beginUpdates];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView endUpdates];
     }
 }
 
