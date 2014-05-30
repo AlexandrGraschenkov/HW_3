@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5tb-cn-XxG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5tb-cn-XxG">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Tasks Table Controller - Tasks-->
@@ -12,11 +12,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskCell" id="H7W-4P-jjD" customClass="TaskCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H7W-4P-jjD" id="TFa-5X-5Ir">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task is here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9XT-ZO-N7m">
+                                            <rect key="frame" x="20" y="18" width="90" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wWr-sp-jCC">
+                                            <rect key="frame" x="20" y="31" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="star.png" id="zph-fh-qHV">
+                                            <rect key="frame" x="254" y="9" width="33" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="I6C-Pd-iLu">
+                                            <rect key="frame" x="70" y="47" width="150" height="2"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </progressView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="wWr-sp-jCC" id="iVf-9t-hn9"/>
+                                    <outlet property="favourite" destination="zph-fh-qHV" id="vbZ-MH-9Pj"/>
+                                    <outlet property="progressiveView" destination="I6C-Pd-iLu" id="9QT-Vu-Iea"/>
+                                    <outlet property="taskTitleWeak" destination="9XT-ZO-N7m" id="JP0-5I-Qmw"/>
+                                    <segue destination="xR6-ta-074" kind="push" identifier="editTask" id="WFS-ob-5Tf"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ust-wE-qLc" id="7Sq-aZ-EPA"/>
+                            <outlet property="delegate" destination="ust-wE-qLc" id="GD2-GI-DP3"/>
+                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Tasks" id="g6j-yK-U3f">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aOu-f5-RUM">
                             <connections>
-                                <segue destination="xR6-ta-074" kind="push" identifier="addTask" id="Jaw-W3-Lbc"/>
+                                <segue destination="xR6-ta-074" kind="push" identifier="addTask" id="Qnc-RT-gwn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -39,12 +83,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="xR6-ta-074" id="riv-qy-qmu"/>
+                                    <outlet property="delegate" destination="xR6-ta-074" id="TFb-ay-dsY"/>
                                 </connections>
                             </textField>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" id="FY9-qr-ASS">
-                                <rect key="frame" x="25" y="257" width="284" height="34"/>
+                                <rect key="frame" x="25" y="256" width="284" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeCompletion:" destination="xR6-ta-074" eventType="valueChanged" id="Nsb-Vn-aTm"/>
+                                </connections>
                             </slider>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ESF-sN-tiU">
                                 <rect key="frame" x="20" y="123" width="280" height="119"/>
@@ -75,10 +122,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Edit task" id="A6d-to-lQN"/>
                     <connections>
-                        <outlet property="completeSlider" destination="FY9-qr-ASS" id="ho7-pj-2zt"/>
-                        <outlet property="descTextView" destination="ESF-sN-tiU" id="P4g-jI-Ow1"/>
-                        <outlet property="markedButton" destination="e8p-GK-dVd" id="CVB-D0-quh"/>
-                        <outlet property="titleTextField" destination="0Yq-4j-d5S" id="cMq-Dl-fFh"/>
+                        <outlet property="inputField" destination="0Yq-4j-d5S" id="vKu-bs-8PB"/>
+                        <outlet property="isMarked" destination="e8p-GK-dVd" id="Paa-Ml-5Ct"/>
+                        <outlet property="scrollBar" destination="FY9-qr-ASS" id="JFF-ZM-LyK"/>
+                        <outlet property="textField" destination="ESF-sN-tiU" id="kQC-4C-Xq0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rp1-AM-QNr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,4 +156,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="WFS-ob-5Tf"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -35,6 +35,7 @@
         [taskManager taskChanged:editingTask];
         editingTask = nil;
     }
+    NSLog(@"%lu", (unsigned long)taskManager.tasks.count);
     [self.tableView reloadData];
 }
 
@@ -44,6 +45,7 @@
     if([segue.identifier isEqual:@"addTask"]){
         editingTask = [[Task alloc] init];
         [taskManager addTask:editingTask];
+        NSLog(@"%lu", (unsigned long)taskManager.tasks.count);
         editTaskController.task = editingTask;
     } else if([segue.identifier isEqual:@"editTask"]){
         int idx = self.tableView.indexPathForSelectedRow.row;
@@ -61,10 +63,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //в визуальном представлении надо незабыть задать индетификатор для ячейки
+    //в визуальном представлении надо не забыть задать индетификатор для ячейки
     static NSString *CellIdentifier = @"TaskCell";
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    if (!cell) {
+        cell = [[TaskCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    cell.task = [taskManager.tasks objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -82,6 +87,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //удаляем строчку Task из данных, обновляем таблицу
+        Task *task = [taskManager.tasks objectAtIndex:indexPath.row];
+        [taskManager deleteTask:task];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
