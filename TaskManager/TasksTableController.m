@@ -25,14 +25,17 @@
     [super viewDidLoad];
     
     self.clearsSelectionOnViewWillAppear = YES;
-    taskManager = [TaskManager sharedInstance];
+    
+    
+   taskManager = [TaskManager sharedInstance];
+   // NSLog(@"123");
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     if(editingTask){
-        [taskManager taskChanged:editingTask];
+        [[TaskManager sharedInstance] taskChanged:editingTask];
         editingTask = nil;
     }
     [self.tableView reloadData];
@@ -43,11 +46,11 @@
     EditTaskController* editTaskController = segue.destinationViewController;
     if([segue.identifier isEqual:@"addTask"]){
         editingTask = [[Task alloc] init];
-        [taskManager addTask:editingTask];
+        [[TaskManager sharedInstance] addTask:editingTask];
         editTaskController.task = editingTask;
     } else if([segue.identifier isEqual:@"editTask"]){
         int idx = self.tableView.indexPathForSelectedRow.row;
-        editingTask = taskManager.tasks[idx];
+        editingTask = [TaskManager sharedInstance].tasks[idx];
         editTaskController.task = editingTask;
     }
 }
@@ -56,7 +59,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return taskManager.tasks.count;
+    //NSLog(@"Task Manager count = %d",[TaskManager sharedInstance].tasks.count);
+   
+    return [TaskManager sharedInstance].tasks.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -64,7 +69,17 @@
     //в визуальном представлении надо незабыть задать индетификатор для ячейки
     static NSString *CellIdentifier = @"TaskCell";
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    Task *task = [taskManager.tasks objectAtIndex:indexPath.row];
+    if (cell == nil) {
+       cell = [[TaskCell alloc] initWithStyle:UITableViewCellStyleDefault   reuseIdentifier:CellIdentifier];
+    }
+ 
+    cell.task = task;
+    if (task.marked == YES){
+        cell.taskMark.image = [UIImage imageNamed:@"star.png"];
+    }
+   //NSLog(@"TASK = %@", task.title);
+    //NSLog(@"TASKBODY=%@",task.desc);
     return cell;
 }
 
@@ -82,6 +97,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //удаляем строчку Task из данных, обновляем таблицу
+        Task *task = [[TaskManager sharedInstance].tasks objectAtIndex:indexPath.row];
+        [taskManager deleteTask:task];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     }
 }
 
