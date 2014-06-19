@@ -12,4 +12,12 @@
 
 @interface TaskCell : UITableViewCell
 @property (nonatomic, strong) Task* task;
+@property (weak, nonatomic) IBOutlet UILabel *taskTitle;
+@property (weak, nonatomic) IBOutlet UILabel*taskBody;
+
+@property (weak, nonatomic) IBOutlet UISlider *taskSlider;
+
+@property (weak, nonatomic) IBOutlet UIImageView *taskMark;
+
+
 @end
