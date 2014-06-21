@@ -61,10 +61,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //в визуальном представлении надо незабыть задать индетификатор для ячейки
     static NSString *CellIdentifier = @"TaskCell";
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    cell.task = [taskManager.tasks objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -82,6 +81,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //удаляем строчку Task из данных, обновляем таблицу
+        Task *task = [taskManager.tasks objectAtIndex:indexPath.row];
+        [taskManager deleteTask:task];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     }
 }
 
