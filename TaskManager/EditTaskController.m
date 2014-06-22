@@ -41,19 +41,21 @@
 
 - (IBAction)markPressed:(UIButton*)sender
 {
-    NSLog(@"%hhd",sender.selected);
+   // NSLog(@"%hhd",sender.selected);
     sender.selected = !sender.selected;
     [_task setMarked:sender.selected];
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    NSLog(@"%@",[textField text]);
+    NSLog(@"title %@",[textField text]);
+    
     [_task setTitle:[textField text]];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
+    NSLog(@"desc %@",[textView text]);
     [_task setDesc:[textView text]];
 }
 

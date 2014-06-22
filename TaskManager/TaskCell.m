@@ -28,7 +28,7 @@
     [_taskDescription setText:[_task desc]];
     [_taskMarked setHidden:![_task marked]];
     NSLog(@"%d",[task complete]/100);
-    [_taskProgress setProgress:[_task complete]/100];
+    [_taskProgress setProgress:(float)[_task complete]/100];
 }
 
 @end
