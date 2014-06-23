@@ -64,7 +64,11 @@
     //в визуальном представлении надо незабыть задать индетификатор для ячейки
     static NSString *CellIdentifier = @"TaskCell";
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+  
+    cell.task = [taskManager.tasks objectAtIndex:indexPath.row];
+    if (cell.task.marked){
+        cell.isMarked.image = [UIImage imageNamed:@"star.png"];
+    }
     return cell;
 }
 
@@ -82,6 +86,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //удаляем строчку Task из данных, обновляем таблицу
+        Task *t = [taskManager.tasks objectAtIndex:indexPath.row];
+             [taskManager deleteTask:t];
+             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     }
 }
 
