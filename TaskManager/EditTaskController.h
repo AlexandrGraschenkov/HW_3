@@ -11,4 +11,9 @@
 @class Task;
 @interface EditTaskController : UIViewController
 @property (nonatomic, strong) Task* task;
+@property (weak, nonatomic) IBOutlet UITextField *titleTask;
+@property (weak, nonatomic) IBOutlet UITextView *description;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
+@property (weak, nonatomic) IBOutlet UIButton *isMarked;
+- (IBAction)changeCompletion:(id)sender;
 @end

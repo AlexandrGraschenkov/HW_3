@@ -20,6 +20,10 @@
     
     //заполняем данными из Task
     //у кнопок есть свойство selected, оно тут  пригодится
+    [self.titleTask setText:[self.task title]];
+    [self.description setText:[self.task desc]];
+    [self.slider setValue: [self.task complete]];
+    [self.isMarked setSelected:[self.task marked]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -32,7 +36,19 @@
 - (IBAction)markPressed:(UIButton*)sender
 {
     sender.selected = !sender.selected;
+    [self.task setMarked:sender.selected];
 }
+
+    - (void)textFieldDidEndEditing:(UITextField *)textField
+    {
+        [self.task setTitle:[textField text]];
+    }
+
+    - (void)textViewDidEndEditing:(UITextView *)textView
+    {
+        [self.task setDesc:[textView text]];
+    }
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -50,6 +66,12 @@
     }
     
     return YES;
+}
+
+- (IBAction)changeCompletion:(id)sender {
+   
+     [self.task setComplete:(int)self.slider.value];
+   
 }
 
 @end
